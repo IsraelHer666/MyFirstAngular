@@ -8,4 +8,12 @@ import { Component, signal } from '@angular/core';
 })
 export class App {
   protected readonly title = signal('cellphone');
+  //definiendo variables para ser llamadas de manera posterior.
+  inicio = "Inicio" 
+  categorias = "Categorias"
+  catalogo = "Catalogo"
+  contacto = "Contacto"
+  sucursales = "Sucursales"
+  redesSociales = "Redes Sociales"
+  logo = "/img/iconDesign.png"
 }

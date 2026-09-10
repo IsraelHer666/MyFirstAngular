@@ -1,0 +1,15 @@
+.background-nav{
+    background-color: #7876e3e5;
+}   
+
+.iconColor{
+color: #9927d2 !important;
+}
+li a {
+    font-family: "fuckingTypography" !important;
+    font-size: 1.2rem !important;
+}
+@font-face {
+    font-family:"fuckingTypography";
+    src: url(/fonts/fuckingTypography.ttf);
+}
