@@ -1,1 +1,19 @@
-<p>inicio works!</p>
+<header class="video-header">
+  <!-- Overlay oscuro sobre el video -->
+  <div class="overlay"></div>
+
+  <!-- Elemento de video HTML5 de fondo -->
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="/video/video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Contenido principal centrado mediante clases de Materialize -->
+  <div class="container valign-wrapper h-100">
+    <div class="row full-width center-align white-text">
+      <div class="col s12">
+        <h1 class="header-title">{{tituloSlider}}</h1>
+        <p class="flow-text margin-0">{{descSlider}}</p>
+      </div>
+    </div>
+  </div>
+</header>

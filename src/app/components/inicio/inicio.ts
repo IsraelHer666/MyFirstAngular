@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './inicio.css',
   templateUrl: './inicio.html',
 })
-export class Inicio {}
+export class Inicio {
+  tituloSlider = 'Diseño moderno y elegante';
+  descSlider = 'Explora nuestros servicios';
+}
