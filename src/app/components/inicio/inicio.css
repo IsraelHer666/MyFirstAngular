@@ -48,6 +48,12 @@
   font-weight: 300;
 }
 
+.slider h3, h5{
+  color: #000000;
+}
+.subtitle {
+ color:#000000 !important;
+}
 @media (min-width: 992px) {
 	.logo-header {
 		height: 100vh;

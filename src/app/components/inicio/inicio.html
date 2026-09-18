@@ -1,13 +1,12 @@
 <header class="video-header">
-  <!-- Overlay oscuro sobre el video -->
+  <!--  
   <div class="overlay"></div>
 
-  <!-- Elemento de video HTML5 de fondo -->
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
     <source src="/video/video.mp4" type="video/mp4">
   </video>
 
-  <!-- Contenido principal centrado mediante clases de Materialize -->
+ 
   <div class="container valign-wrapper h-100">
     <div class="row full-width center-align white-text">
       <div class="col s12">
@@ -15,5 +14,51 @@
         <p class="flow-text margin-0">{{descSlider}}</p>
       </div>
     </div>
+  </div>
+  -->
+  <div class="slider fullscreen">
+    <ul class="slides">
+      <li>
+        <img
+          src="/img/img1.jpg"
+        />
+        <!-- random image -->
+        <div class="caption center-align">
+          <h3>{{tituloSlider1}}</h3>
+          <h5  class=" subtitle light grey-text text-lighten-3">{{descSlider1}}</h5>
+        </div>
+      </li>
+      <li>          
+        <img
+          src="/img/img2.png"
+        />
+        <!-- random image -->
+        <div class="caption left-align">
+          <h3>{{tituloSlider2}}</h3>
+          <h5 class="subtitle light grey-text text-lighten-3">{{descSlider2}}</h5>
+        </div>
+      </li>
+      <li>
+        <img
+          src="/img/img3.jpeg"
+        />
+        <!-- random image -->
+        <div class="caption right-align">
+          <h3>{{tituloSlider3}}</h3>
+          <h5 class="subtitle light grey-text text-lighten-3">{{descSlider3}}</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="buysellads buysellads-demo hide-on-small-only">
+    <a href="#!" class="close"><i class="material-icons">close</i></a>
+    <!-- CarbonAds Zone Code -->
+    <script
+      async
+      type="text/javascript"
+      src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss"
+      id="_carbonads_js"
+    ></script>
   </div>
 </header>

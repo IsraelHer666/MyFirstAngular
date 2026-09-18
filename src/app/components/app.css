@@ -5,6 +5,9 @@
 .iconColor{
 color: #9927d2 !important;
 }
+.Logo{
+   height: 60px !important;
+}
 li a {
     font-family: "fuckingTypography" !important;
     font-size: 1.2rem !important;
