@@ -33,7 +33,12 @@
           <div class="card-content">
             <span class="card-title">{{ producto.nombre }}</span>
             <p class="descripcion-producto">{{ producto.descripcion }}</p>
-            <p class="precio">{{ producto.precio | currency: 'MXN' : 'symbol' : '1.2-2' }}</p>
+            <p class="precio" [ngStyle]="{'color': producto.descuento ? 'green' : 'black', 'font-size': producto.descuento ? '30px' : '25px', 'text-decoration' : producto.descuento ? 'line-through' : 'none' }" >
+              {{ producto.precio | currency: 'MXN' : 'symbol' : '1.2-2' }}
+            </p>
+          </div>
+          <div class="card-panel black-text" [ngClass]="{ 'green': producto.disponible, 'red': !producto.disponible }">
+            {{producto.disponible ? 'Disponible' : 'No disponible'}}
           </div>
         </article>
       </div>
