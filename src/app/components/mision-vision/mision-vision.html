@@ -1,0 +1,22 @@
+<section>
+    <div class="container"></div>
+    <div class="col s12 center-align">
+        <h1>
+            {{titulo}}
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col m6" *ngFor="let elemento of misionVision">
+            <h5>
+                {{elemento.titulo}}
+            </h5>
+            <i class="material-icons">{{elemento.icono}} </i>
+            <p>
+                {{elemento.descripcion}}
+            </p>
+            <p>
+                {{elemento.descripcion2}}
+            </p>
+        </div>
+    </div>
+</section>

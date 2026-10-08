@@ -19,6 +19,7 @@ export class App implements AfterViewInit, OnDestroy {
   redesSociales = "Redes Sociales"
   logo = "/img/iconDesign.png"
   logoNav = "/img/iconNav.png"
+  mision = "Mision"
 
   private sidenav: any;
 
