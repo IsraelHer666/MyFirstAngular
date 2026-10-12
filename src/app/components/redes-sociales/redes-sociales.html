@@ -1,0 +1,21 @@
+<footer class="background-footer page-footer" id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12 m6">
+        <h5 class="white-text">Siguenos en nuestras redes sociales</h5>
+        <ul *ngFor="let red of redes">
+          <li>
+            <a style="font-size: 24px;" class="grey-text text-lighten-3" [href]="red.url"
+              >{{ red.nombre }} <i [class]="red.icono" [ngStyle]= "{ color: red.color, fontSize: '24px'}"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      {{ leyenda }}
+    </div>
+  </div>
+</footer>
