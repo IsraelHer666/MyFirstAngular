@@ -1,0 +1,104 @@
+<section>
+    <div class="container">
+            <div class = "row ">
+        <div class = "col s12 center-align">
+            <h1>Contactanos</h1>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col s12 input-field">
+            <input type = "text" name = "nombre" id = "nombre"> <label for = "nombre">{{nombre}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 input-field">
+            <input type="email" name="email" id="email"> <label for="email">{{email}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 input-field">
+            <input type="text" name="telefono" id="telefono"> <label for = "telefono">{{telefono}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 input-field">
+            <input type="date" name="fecha" id="fecha"> <label for = "fecha" >{{fecha}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 input-field">
+            <ul>
+                <li>
+                   <label>
+                     <input type="radio" name="modalidad" id="modalidad"> <span>Recoger en Tienda</span>
+                   </label>
+                </li>
+                <li>
+                   <label>
+                     <input type="radio" name="modalidad" id="modalidad"> <span>Envio a Domicilio</span>
+                   </label>
+                </li>
+                <li>
+                   <label>
+                     <input type="radio" name="modalidad" id="modalidad"> <span>Plataforma de Envio</span>
+                   </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <select name="tipoProducto" id="tipoProducto">
+                <label>Selecciona el tipo de producto</label>
+                <option value="" disabled selected>Selecciona un producto</option>
+                <option value="repisas">Repisas</option>
+                <option value="cuadros">Cuadros</option>
+                <option value="plantas">Plantas</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <label>Selecciona los complementos</label>
+            <ul>
+                <label>  
+                    <input type="checkbox" name="complementos" value="escritorio" id="complementos"> <span>Escritorio</span>
+                </label>
+                <br>
+                <label>  
+                    <input type="checkbox" name="complementos" value="lampara" id="complementos"> <span>Lampara</span>
+                </label>
+                <br>
+                <label>  
+                    <input type="checkbox" name="complementos" value="maceta" id="complementos"> <span>Maceta</span>
+                </label>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 input-field">
+            <label for="comentarios">comentarios</label>
+            <textarea id="comentarios" name="comentarios" class="materialize-textarea"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p>Aceptas el aviso de privacidad</p>
+            <div class="switch">
+                <label>
+                    No
+                    <input type="checkbox" name="aceptar" id="aceptar">
+                    <span class="lever"></span>
+                    Si
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            <input type="button" value="Guardar" class="btn purple  lighten-2">
+            <input type="button" value="Cancelar" class="btn blue lighten-4">
+        </div>
+    </div>
+    </div>
+</section>
