@@ -1,5 +1,12 @@
-import { Component, AfterViewInit } from '@angular/core';
-declare var M: any; //despues
+import { Component, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ContactoService } from './../../services/contacto';
+import { Solicitud } from './../../models/solicitud';
+
+
+
+declare var M: any;
+declare var $: any; //para poder utilizar jquery
 
 @Component({
   selector: 'app-contacto',
@@ -7,13 +14,98 @@ declare var M: any; //despues
   styleUrl: './contacto.css',
   templateUrl: './contacto.html',
 })
-export class Contacto  implements AfterViewInit{
-  ngAfterViewInit(): void {
-    var elements = document.querySelectorAll('select');
-    M.FormSelect.init(elements);
+export class Contacto implements AfterViewInit, OnInit, OnDestroy {
+  solicitudes: Solicitud[] = [];
+  suscripcion?: Subscription;
+  idEditar: string | null = null;
+  guardando = false;
+  error = '';
+  mensaje = '';
+  productos = ['Pastel de cumpleaños', 'Pastel de bodas', 'Cupcakes',
+    'Galletas decoradas', 'Postres individuales', 'Mesa de postres'];
+  complementosDisponibles = ['Decoración personalizada', 'Velas',
+    'Tarjeta de felicitación', 'Empaque especial'];
+  formulario: Solicitud = this.nuevoFormulario();
+
+  constructor(private servicio: ContactoService) { }
+
+  ngOnDestroy(): void {
+    this.consultarSolicitudes();
   }
-  nombre = "Nombre";
-  email = "Email";
-  telefono  = "Telefono"
-  fecha = "Selecciona la fecha"
+  ngOnInit(): void {
+    this.suscripcion?.unsubscribe();
+  }
+nuevoFormulario(): Solicitud {
+    return { id: '', nombre: '', correo: '', telefono: '',
+      fechaEvento : '', entrega: '', tipoProducto: '',
+      complementos: '', comentarios: '', aceptasAviso: false };
+  }
+
+  consultarSolicitudes(): void {
+    this.suscripcion = this.servicio.consultar().subscribe({
+      next: datos => { this.solicitudes = datos; this.error = ''; },
+      error: error => { console.error(error); this.error = 'Error al consultar.'; }
+    });
+  }
+
+  tieneComplemento(c: string): boolean {
+    return this.formulario.complementos.includes(c);
+  }
+
+ seleccionarComplemento(c: string, marcado: boolean): void {
+       this.formulario.complementos = c;
+  }
+
+  async guardar(): Promise<void> {
+    if (this.guardando) return;
+    this.guardando = true; this.error = ''; this.mensaje = '';
+    try {
+      if (this.idEditar) {
+        await this.servicio.actualizar(this.idEditar, this.formulario);
+        this.mensaje = 'Solicitud actualizada correctamente.';
+      } else {
+        await this.servicio.insertar(this.formulario);
+        this.mensaje = 'Solicitud registrada correctamente.';
+      }
+      this.limpiar(false);
+    } catch (error) {
+      console.error(error); this.error = 'No fue posible guardar.';
+    } finally { this.guardando = false; }
+  }
+
+  editar(s: Solicitud): void {
+    this.idEditar = s.id || null;
+    this.formulario = { ...s };
+    this.error = ''; this.mensaje = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async eliminar(s: Solicitud): Promise<void> {
+    if (!s.id || !window.confirm('¿Eliminar esta solicitud?')) return;
+    try {
+      await this.servicio.eliminar(s.id);
+      if (this.idEditar === s.id) this.limpiar(false);
+      this.mensaje = 'Solicitud eliminada correctamente.';
+      this.error = '';
+    } catch (error) {
+      console.error(error); this.error = 'No fue posible eliminar.';
+    }
+  }
+
+  limpiar(borrarMensajes = true): void {
+    this.formulario = this.nuevoFormulario();
+    this.idEditar = null;
+    if (borrarMensajes) { this.error = ''; this.mensaje = ''; }
+  }
+
+  ngAfterViewInit(): void {
+    var elements = document.querySelectorAll("select")
+    M.FormSelect.init(elements);
+
+    $('input#nombre, input#email, input#telefono, textarea#comentarios').characterCounter();
+  }
+  nombre = "Nombre"
+  email = "Email"
+  telefono = "Telefono"
+  fecha = "Selecciona una fecha"
 }
